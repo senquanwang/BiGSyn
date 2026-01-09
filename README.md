@@ -1,3 +1,3 @@
 # BiGTSynergy
-A Dual-View Heterogeneous Graph Framework for Interpretable Drug Combination Synergy Prediction
+A Bi-Level Heterogeneous Graph Transformer Framework for Interpretable Drug Synergy Prediction
 ![Architecture](architecture.png)
