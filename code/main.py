@@ -13,7 +13,7 @@ from torch.utils.data import DataLoader
 from sklearn.model_selection import KFold
 
 from dataset import DDSDataset, collate
-from models.HGTSynergy import HGTSynergy
+from models.BiGTSynergy import BiGTSynergy
 from process_data import load_data, data_split
 from utils import setup_seed, save, save_results
 # from train_eval import train, eval,
@@ -25,7 +25,7 @@ def init_args():
     '''data'''
     parser.add_argument('--dataset', type=str, default="DrugCombDB")  # Oneil or DrugCombDB
     '''model'''
-    parser.add_argument('--model', type=str, default="HGTSynergy")
+    parser.add_argument('--model', type=str, default="BiGTSynergy")
     parser.add_argument('--layer', type=int, default=2)
     parser.add_argument("--hidden_dim", type=int, default=256)
     parser.add_argument("--num_heads", type=int, default=4)
@@ -106,10 +106,10 @@ if __name__ == "__main__":
         test_loader = DataLoader(test_data, batch_size=args.batch_size, shuffle=False, collate_fn=collate)
         eval_loader = DataLoader(eval_data, batch_size=args.batch_size, shuffle=False, collate_fn=collate)
 
-        if args.model == "HGTSynergy":
-            model = HGTSynergy(args=args, feature_list=features_list, in_dims=in_dims,
-                               num_node=data_sta['num_node'], num_s_rel=data_sta['num_s_rel'], num_s_deg=data_sta['num_s_deg'],
-                               num_m_rel=data_sta['num_m_rel'], num_m_deg=data_sta['num_m_deg'], device=device, num_m_dist=data_sta['num_m_dist'], dropout=0.2)
+        if args.model == "BiGTSynergy":
+            model = BiGTSynergy(args=args, feature_list=features_list, in_dims=in_dims,
+                                num_node=data_sta['num_node'], num_s_rel=data_sta['num_s_rel'], num_s_deg=data_sta['num_s_deg'],
+                                num_m_rel=data_sta['num_m_rel'], num_m_deg=data_sta['num_m_deg'], device=device, num_m_dist=data_sta['num_m_dist'], dropout=0.2)
         model.to(device)
 
         if args.test is None:

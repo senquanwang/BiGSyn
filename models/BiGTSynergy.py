@@ -56,9 +56,9 @@ class NodeFeatures(nn.Module):
         return node_feature
 
 
-class HGTSynergy(nn.Module):
+class BiGTSynergy(nn.Module):
     def __init__(self, args, feature_list, in_dims, num_node, num_s_rel, num_s_deg, num_m_rel, num_m_deg, device, dropout = 0.2, num_m_dist=None):
-        super(HGTSynergy, self).__init__()
+        super(BiGTSynergy, self).__init__()
 
         layer = args.layer
         embed_dim = args.hidden_dim
